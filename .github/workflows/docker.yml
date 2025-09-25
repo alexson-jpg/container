@@ -1,10 +1,11 @@
 name: docker
 
 on:
+ workflow_dispatch:   # chạy thủ công từ giao diện GitHub
+ 
  schedule:
-    - cron: "0 * * * *"   # chạy mỗi 6 tiếng
-  workflow_dispatch:
-  
+   - cron: "0 * * * *"   # chạy mỗi 6 tiếng
+ 
  # push:                # hoặc bạn có thể bật khi push code
   #  branches:
    #   - main
