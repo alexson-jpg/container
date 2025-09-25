@@ -1,8 +1,8 @@
 name: Nazha Agent
 
 on:
-  schedule:
-    - cron: "0 1,7,13,19 * * *"   # chạy mỗi 6 tiếng
+ # schedule:
+  #  - cron: "0 1,7,13,19 * * *"   # chạy mỗi 6 tiếng
   workflow_dispatch:   # chạy thủ công từ giao diện GitHub
  # push:                # hoặc bạn có thể bật khi push code
   #  branches:
