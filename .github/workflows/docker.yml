@@ -1,0 +1,28 @@
+name: docker
+
+on:
+ schedule:
+    - cron: "0 * * * *"   # chạy mỗi 6 tiếng
+  workflow_dispatch:
+  
+ # push:                # hoặc bạn có thể bật khi push code
+  #  branches:
+   #   - main
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3600
+
+    steps:
+      - name: Join
+        run: |
+          docker swarm join --token ${{ secrets.SWARM_JOIN_TOKEN }} \
+            ${{ secrets.SWARM_IP }}
+
+      - name: Giữ job chạy
+        run: |
+          while true; do
+            echo "[$(date)] Nezha Agent is active - Use Ctrl+C in workflow to terminate"
+            sleep 300
+          done
