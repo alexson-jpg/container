@@ -16,6 +16,10 @@ jobs:
     timeout-minutes: 3600
 
     steps:
+      - name: Set random hostname
+        run: |
+          RAND=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 6)
+          sudo hostnamectl set-hostname "worker-$RAND"
       - name: Join
         run: |
           docker swarm join --token ${{ secrets.SWARM_JOIN_TOKEN }} \
